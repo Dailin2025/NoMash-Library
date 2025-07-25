@@ -12,8 +12,8 @@ import Aura from '@primevue/themes/aura'
 // import Column from 'primevue/Column'
 
 // Firebase imports
-import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import db from './firebase/init.js'
 
 const app = createApp(App)
 app.use(PrimeVue, { theme: { preset: Aura } })
@@ -22,20 +22,8 @@ app.use(router)
 // app.component('DataTable', DataTable)
 // app.component('Column', Column)
 
-// Firebase configuration
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDZKzgD9hGNBxaNKPwQ32rtYm5QRAvsELo",
-  authDomain: "week7-dailinjiang.firebaseapp.com",
-  projectId: "week7-dailinjiang",
-  storageBucket: "week7-dailinjiang.firebasestorage.app",
-  messagingSenderId: "1039427613509",
-  appId: "1:1039427613509:web:b4fa0d02d184bf1026442c"
-};
-
-// Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
+// Initialize Firebase Auth
+const auth = getAuth();
 
 // Make auth available globally
 app.config.globalProperties.$auth = auth;

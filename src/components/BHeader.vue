@@ -21,6 +21,12 @@
         <li class="nav-item">
           <router-link to="/role-auth" class="nav-link" active-class="active">Role Auth</router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/addbook" class="nav-link" active-class="active">Add Book</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/book-management" class="nav-link" active-class="active">Book Management</router-link>
+        </li>
       </ul>
     </header>
   </div>

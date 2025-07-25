@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
-import FireLoginView from '../views/FireLoginView.vue'
 import RoleBasedAuthView from '../views/RoleBasedAuthView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
+import AddBookView from '../views/AddBookView.vue'
+import BookManagementView from '../views/BookManagementView.vue'
 
 const routes = [
   {
@@ -16,11 +17,6 @@ const routes = [
     path: '/about',
     name: 'About',
     component: AboutView
-  },
-  {
-    path: '/firelogin',
-    name: 'FireLogin',
-    component: FireLoginView
   },
   {
     path: '/role-auth',
@@ -36,6 +32,16 @@ const routes = [
     path: '/FireLogin',
     name: 'FireLogin',
     component: FirebaseSigninView
+  },
+  {
+    path: '/addbook',
+    name: 'AddBook',
+    component: AddBookView
+  },
+  {
+    path: '/book-management',
+    name: 'BookManagement',
+    component: BookManagementView
   }
 ]
 
