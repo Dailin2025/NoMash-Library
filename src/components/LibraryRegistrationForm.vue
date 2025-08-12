@@ -6,17 +6,11 @@ import Column from 'primevue/column'
 const formData = ref({
   username: '',
   password: '',
-<<<<<<< HEAD
-  isAustralian: false,
-  reason: '',
-  gender: ''
-=======
   confirmPassword: '',
   isAustralian: false,
   reason: '',
   gender: '',
   suburb: 'Clayton'
->>>>>>> AssessedLab10
 })
 
 const submittedCards = ref([])
@@ -43,10 +37,7 @@ const clearForm = () => {
 const errors = ref({
   username: null,
   password: null,
-<<<<<<< HEAD
-=======
   confirmPassword: null,
->>>>>>> AssessedLab10
   resident: null,
   gender: null,
   reason: null
@@ -82,8 +73,6 @@ const validatePassword = (blur) => {
     errors.value.password = null
   }
 }
-<<<<<<< HEAD
-=======
 
 /**
  * Confirm password validation function that checks if the password and confirm password fields match.
@@ -104,7 +93,6 @@ const validateReason = () => {
     errors.value.reason = null
   }
 }
->>>>>>> AssessedLab10
 </script>
 
 <template>
@@ -112,16 +100,9 @@ const validateReason = () => {
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-8 offset-md-2">
-<<<<<<< HEAD
-        <h1 class="text-center">🗄️ W4. Library Registration Form</h1>
-        <p class="text-center">
-          This form now includes validation. Registered users are displayed in a data table below
-          (PrimeVue).
-=======
         <h1 class="text-center">🗄️ W5. Library Registration Form</h1>
         <p class="text-center">
           Let's build some more advanced features into our form.
->>>>>>> AssessedLab10
         </p>
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
@@ -137,9 +118,6 @@ const validateReason = () => {
               />
               <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
             </div>
-<<<<<<< HEAD
-
-=======
             <div class="col-md-6 col-sm-6">
               <label for="gender" class="form-label">Gender</label>
               <select class="form-select" id="gender" v-model="formData.gender" required>
@@ -150,7 +128,6 @@ const validateReason = () => {
             </div>
           </div>
           <div class="row mb-3">
->>>>>>> AssessedLab10
             <div class="col-md-6 col-sm-6">
               <label for="password" class="form-label">Password</label>
               <input
@@ -163,8 +140,6 @@ const validateReason = () => {
               />
               <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
             </div>
-<<<<<<< HEAD
-=======
             <div class="col-md-6 col-sm-6">
               <label for="confirm-password" class="form-label">Confirm password</label>
               <input
@@ -178,7 +153,6 @@ const validateReason = () => {
                 {{ errors.confirmPassword }}
               </div>
             </div>
->>>>>>> AssessedLab10
           </div>
           <div class="row mb-3">
             <div class="col-md-6 col-sm-6">
@@ -192,17 +166,6 @@ const validateReason = () => {
                 <label class="form-check-label" for="isAustralian">Australian Resident?</label>
               </div>
             </div>
-<<<<<<< HEAD
-            <div class="col-md-6 col-sm-6">
-              <label for="gender" class="form-label">Gender</label>
-              <select class="form-select" id="gender" v-model="formData.gender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-=======
->>>>>>> AssessedLab10
           </div>
           <div class="mb-3">
             <label for="reason" class="form-label">Reason for joining</label>
