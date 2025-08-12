@@ -211,9 +211,6 @@ const validateReason = () => {
               id="reason"
               rows="3"
               v-model="formData.reason"
-<<<<<<< HEAD
-            ></textarea>
-=======
               @input="validateReason"
             ></textarea>
             <div v-if="errors.reason" class="text-danger">{{ errors.reason }}</div>
@@ -224,7 +221,6 @@ const validateReason = () => {
           <div class="mb-3">
             <label for="suburb" class="form-label">Suburb</label>
             <input type="text" class="form-control" id="suburb" v-model="formData.suburb" />
->>>>>>> AssessedLab10
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
