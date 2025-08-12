@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "16"
           cache: 'npm'
       
       - name: Setup Pages
@@ -41,7 +41,16 @@ jobs:
         run: |
           npm cache clean --force
           rm -rf node_modules package-lock.json
-          npm install --no-optional --no-audit
+          npm ci
+      
+      - name: Verify dependencies
+        run: |
+          echo "Checking vite installation..."
+          npm list vite
+          echo "Checking node_modules structure..."
+          ls -la node_modules/.bin/ | grep vite
+          echo "Checking package-lock.json..."
+          ls -la package-lock.json
       
       - name: Build with Vite
         run: npx vite build
