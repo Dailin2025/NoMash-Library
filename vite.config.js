@@ -14,5 +14,9 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  // GitHub Pages部署配置
+  base: process.env.NODE_ENV === 'production' 
+    ? '/FIT5032_2025_Diang_35523239/'  // 替换为你的仓库名称
+    : '/'
 })
