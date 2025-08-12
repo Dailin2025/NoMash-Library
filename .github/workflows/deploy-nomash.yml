@@ -33,12 +33,25 @@ jobs:
         with:
           node-version: "20"
           cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm cache clean --force
+          rm -rf node_modules package-lock.json
+          npm install
+      
+      - name: Verify dependencies
+        run: |
+          echo "Verifying vite installation..."
+          npm list vite
+          npm list @vitejs/plugin-vue
+          echo "Checking vite executable..."
+          which vite || echo "vite not in PATH"
+          ls -la node_modules/.bin/vite || echo "vite not in node_modules/.bin"
       
       - name: Build with Vite
         run: |
@@ -46,6 +59,11 @@ jobs:
           echo "Node version: $(node --version)"
           echo "NPM version: $(npm --version)"
           echo "Vite version: $(npx vite --version)"
+          echo "Checking node_modules structure:"
+          ls -la node_modules/.bin/ | grep vite
+          echo "Checking package-lock.json:"
+          ls -la package-lock.json
+          echo "Starting build..."
           npx vite build
         shell: bash
         env:
