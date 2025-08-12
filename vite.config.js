@@ -17,6 +17,6 @@ export default defineConfig({
   },
   // GitHub Pages部署配置
   base: process.env.NODE_ENV === 'production' 
-    ? '/FIT5032_2025_Dailin_Jiang_35523239/'  // 修复拼写错误
+    ? '/NoMash-Library/'  // 新仓库名
     : '/'
 })
