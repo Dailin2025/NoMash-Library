@@ -41,8 +41,15 @@ jobs:
         run: npm install
       
       - name: Build with Vite
-        run: npm run build
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          echo "Vite version: $(npx vite --version)"
+          npm run build
         shell: bash
+        env:
+          NODE_ENV: production
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
