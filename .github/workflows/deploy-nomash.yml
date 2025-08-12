@@ -41,14 +41,21 @@ jobs:
       - name: Clean install
         run: rm -rf node_modules package-lock.json
       
-      - name: Install dependencies
-        run: npm install --no-audit --legacy-peer-deps
+      - name: Install dependencies with exact vite version
+        run: npm install --no-audit --legacy-peer-deps --save-exact
       
       - name: Force install correct vite version
-        run: npm install vite@5.3.1 --save-dev --no-audit
+        run: npm install vite@5.3.1 --save-dev --no-audit --save-exact
       
       - name: Verify vite version
         run: npx vite --version
+      
+      - name: Check vite package installation
+        run: |
+          echo "Checking vite package in node_modules:"
+          ls -la node_modules/vite/
+          echo "Checking vite package.json:"
+          cat node_modules/vite/package.json | grep '"version"'
       
       - name: Debug environment
         run: |
