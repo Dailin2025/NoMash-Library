@@ -64,7 +64,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/FIT5032_2025_Dailin_Jiang_35523239/'),
   routes
 })
 
