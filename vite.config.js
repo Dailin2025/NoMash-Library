@@ -6,13 +6,14 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  // GitHub Pages部署配置
+  base: process.env.NODE_ENV === 'production' 
+    ? '/FIT5032_2025_Dailin_Jiang_35523239/'  // 替换为你的仓库名称
+    : '/'
 })
