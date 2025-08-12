@@ -46,7 +46,7 @@ jobs:
           echo "Node version: $(node --version)"
           echo "NPM version: $(npm --version)"
           echo "Vite version: $(npx vite --version)"
-          npm run build
+          npx vite build
         shell: bash
         env:
           NODE_ENV: production
