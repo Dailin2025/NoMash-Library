@@ -31,26 +31,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version: "18"
           cache: 'npm'
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
       - name: Install dependencies
-        run: |
-          npm cache clean --force
-          rm -rf node_modules package-lock.json
-          npm ci
-      
-      - name: Verify dependencies
-        run: |
-          echo "Checking vite installation..."
-          npm list vite
-          echo "Checking node_modules structure..."
-          ls -la node_modules/.bin/ | grep vite
-          echo "Checking package-lock.json..."
-          ls -la package-lock.json
+        run: npm install
       
       - name: Build with Vite
         run: npx vite build
