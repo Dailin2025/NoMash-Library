@@ -55,9 +55,10 @@ jobs:
           echo "Current directory: $(pwd)"
           echo "Node version: $(node --version)"
           echo "NPM version: $(npm --version)"
-          echo "Vite location: $(which vite)"
+          echo "Vite location: $(which vite || echo 'vite not found in PATH')"
           echo "Vite version: $(npx vite --version)"
-          ls -la node_modules/.bin/ | grep vite
+          echo "Checking vite in node_modules/.bin:"
+          ls -la node_modules/.bin/ | grep vite || echo "No vite found in node_modules/.bin"
       
       - name: Build with Vite
         run: npx vite build --config vite.config.js
