@@ -33,6 +33,7 @@ jobs:
         with:
           node-version: "18"
           cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -42,6 +43,12 @@ jobs:
       
       - name: Install dependencies
         run: npm install --no-audit --legacy-peer-deps
+      
+      - name: Force install correct vite version
+        run: npm install vite@5.3.1 --save-dev --no-audit
+      
+      - name: Verify vite version
+        run: npx vite --version
       
       - name: Build with Vite
         run: npm run build
