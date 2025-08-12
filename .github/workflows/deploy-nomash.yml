@@ -38,7 +38,9 @@ jobs:
         uses: actions/configure-pages@v4
       
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm cache clean --force
+          npm install --no-optional --no-audit
       
       - name: Build with Vite
         run: npx vite build
