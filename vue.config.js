@@ -17,5 +17,12 @@ export default {
         }
       ]
     }
+  },
+  css: {
+    loaderOptions: {
+      css: {
+        modules: false
+      }
+    }
   }
 } 
