@@ -64,7 +64,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/NoMash-Library/'),
+  history: createWebHistory(process.env.NODE_ENV === 'production' ? '/NoMash-Library/' : '/'),
   routes
 })
 
