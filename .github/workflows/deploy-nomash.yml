@@ -50,8 +50,17 @@ jobs:
       - name: Verify vite version
         run: npx vite --version
       
+      - name: Debug environment
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          echo "Vite location: $(which vite)"
+          echo "Vite version: $(npx vite --version)"
+          ls -la node_modules/.bin/ | grep vite
+      
       - name: Build with Vite
-        run: npm run build
+        run: npx vite build --config vite.config.js
         env:
           NODE_ENV: production
       
