@@ -1,89 +1,32 @@
-name: Deploy Vue.js to NoMash-Library
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-  actions: read
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: production
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
-          submodules: recursive
-          fetch-depth: 0
       
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: '20'
       
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Install dependencies
+        run: npm ci
       
-      - name: Clean install
-        run: rm -rf node_modules package-lock.json
+      - name: Build
+        run: npm run build
       
-      - name: Install dependencies with exact vite version
-        run: npm install --no-audit --legacy-peer-deps --save-exact
-      
-      - name: Force install correct vite version
-        run: npm install vite@5.3.1 --save-dev --no-audit --save-exact
-      
-      - name: Verify vite version
-        run: npx vite --version
-      
-      - name: Check vite package installation
-        run: |
-          echo "Checking vite package in node_modules:"
-          ls -la node_modules/vite/
-          echo "Checking vite package.json:"
-          cat node_modules/vite/package.json | grep '"version"'
-      
-      - name: Debug environment
-        run: |
-          echo "Current directory: $(pwd)"
-          echo "Node version: $(node --version)"
-          echo "NPM version: $(npm --version)"
-          echo "Vite location: $(which vite || echo 'vite not found in PATH')"
-          echo "Vite version: $(npx vite --version)"
-          echo "Checking vite in node_modules/.bin:"
-          ls -la node_modules/.bin/ | grep vite || echo "No vite found in node_modules/.bin"
-      
-      - name: Build with Vite
-        run: npx vite build --config vite.config.js
-        env:
-          NODE_ENV: production
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          path: './dist'
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 
+          branch: gh-pages
+          folder: dist 
